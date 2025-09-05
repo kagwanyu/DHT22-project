@@ -2,8 +2,8 @@
 #include <DHT.h>
 
 #define DHTPIN 4 
-#define DHTTYPE DHT22  // or DHT11
-const unsigned long SAMPLE_MS = 60000;  // 1 minute
+#define DHTTYPE DHT22  
+const unsigned long SAMPLE_MS = 60000;  
 
 DHT dht(DHTPIN, DHTTYPE);
 unsigned long lastSample = 0;
