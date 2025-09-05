@@ -24,7 +24,7 @@ void loop() {
 
     float h, t;
     int attempts = 0;
-    const int maxAttempts = 5;
+    const int maxAttempts = 3;
     const int retryDelay = 2000;
 
     while (attempts < maxAttempts) {
