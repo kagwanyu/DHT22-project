@@ -21,18 +21,38 @@ void loop() {
   unsigned long now = millis();
   if (lastSample == 0 || now - lastSample >= SAMPLE_MS) {
     lastSample = now;
-    float h = dht.readHumidity();
-    float t = dht.readTemperature();
 
-    if (isnan(h) || isnan(t)) {
-      Serial.println("WARN: Failed to read from DHT sensor.");
-    } else {
-      Serial.print("Temperature: ");
-      Serial.print(t, 1);
-      Serial.println(" °C");
-      Serial.print("Humidity: ");
-      Serial.print(h, 1);
-      Serial.println(" %");
+    float h, t;
+    int attempts = 0;
+    const int maxAttempts = 5;
+    const int retryDelay = 2000;
+
+    while (attempts < maxAttempts) {
+      h = dht.readHumidity();
+      t = dht.readTemperature();
+
+      if ( !isnan(h) && !isnan(t)){
+        Serial.print("Temprature:");
+        Serial.print(t, 1);
+        Serial.print(" °C");
+
+        Serial.print("Humidity: ");
+        Serial.print(h, 1);
+        Serial.print("%");
+        break;
+      }
+      else {
+        Serial.print("WARN: Failed to read from DHT sensor. Attemt");
+          Serial.println(attempts + 1);
+          delay(retryDelay);
+          attempts++;
+      }
+
+      
+    }
+
+    if (attempts == maxAttempts){
+      Serial.println("ERROR: Max attempts reached.Sample skipped.");
     }
     Serial.println("-----------------------------");
   }
