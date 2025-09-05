@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <DHT.h>
 
-#define DHTPIN 4
+#define DHTPIN 4 
 #define DHTTYPE DHT22  // or DHT11
 const unsigned long SAMPLE_MS = 60000;  // 1 minute
 
