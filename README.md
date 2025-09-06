@@ -10,6 +10,11 @@ Hardware Setup :
                 3v esp32 pin to dht22 vcc
                 ground esp32 to dht22 ground
                 GPIO 4 esp32 to data pin on dht22 which is the SDA pin
-                
+Design Decisions :
+                 Defensive Programming: checks for NaN values to avoid false readings.
+                 Retry Mechanism: up to 3 attempts before reporting an error.
+                 Non-blocking timing (millis()): keeps system responsive.
+                 Safe GPIO pin choice (4 by default, 15 in Wokwi): avoids ESP32 boot issues.           
+Wokwi simulation - https://wokwi.com/projects/441259201266404353                
                 
       
