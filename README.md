@@ -1,14 +1,15 @@
- PROJECT SETUP
- Requirements : Visual studio code
-                Platform IO IDE
+ ESP32, DH22 Temperature and humidity sensor project
+ Firmware project for ESP32-WROOM that reads temperature and humidity from a DHT22 sensor and prints values to the Serial Monitor.
+This project includes simulation support in Wokwi, making it runnable even without physical hardware.
+Features:  Reads temperature (°C) and humidity (%) every 60 seconds.
+           Implements defensive programming: retries on failed sensor reads before reporting errors.
+           Runs on ESP32 with Arduino framework (PlatformIO).
+           Works both on real hardware and Wokwi simulator.
+           Clean output formatting for easy presentation/logging.
+Hardware Setup :
+                3v esp32 pin to dht22 vcc
+                ground esp32 to dht22 ground
+                GPIO 4 esp32 to data pin on dht22 which is the SDA pin
                 
-Hardware Connection : ESP32-WROOM 3V3  --->  DHT VCC
-                      ESP32-WROOM GND  --->  DHT GND
-                      ESP32-WROOM GPIO4 --->  DHT DATA
-                      10k pull-up resistor between DATA and VCC (many DHT modules already include this)
-How to build :   Clone the github repo by running :
-                                                  git clone https://github.com/<your-username>/Test1.git
-                                                  cd Test1
-
                 
       
